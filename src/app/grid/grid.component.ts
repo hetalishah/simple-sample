@@ -22,10 +22,9 @@ export class GridComponent implements OnInit {
     this.show = true;
     let obs=this.http.get('https://jsonplaceholder.typicode.com/todos/');
     obs.subscribe((response)=> {
-    this.response= response;
-    this.loadProducts();
-    }
-    )
+      this.response= response;
+      this.loadProducts();
+    })
   }
 
   closeGrid(){
@@ -34,8 +33,8 @@ export class GridComponent implements OnInit {
 
   private loadProducts(): void {
     this.gridData = { data: this.response,
-      total: this.response.length
-    };
+                      total: this.response.length
+                    };
   }
   
 }

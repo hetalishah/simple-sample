@@ -8,20 +8,24 @@ import { NotificationService } from '@progress/kendo-angular-notification';
 })
 export class AppComponent {
 
-  public value: string = "1234567890";
-  public mask: string = "(000) 000-0000";
-  public maskValidation: boolean = true;
+  value: string = "1234567890";
+  mask: string = "(000) 000-0000";
+  maskValidation: boolean = true;
   title="Not your usual Hello World!";
-  public codes: Array<string> = [
+  codes: Array<string> = [
     '+1','+852', '+91',  '+65',
     '+61', '+359', '+31', '+41'
   ];
   works=true;
-  public code: string ='+1';
-  public handles: Array<string> = [
+  code: string ='+1';
+  handles: Array<string> = [
     '@progress.com', '@telerik.com'
   ];
-  public handle: string ='@progress.com';
+  handle: string ='@progress.com';
+  opened = false;
+  
+  constructor(private notificationService: NotificationService) {}
+  
   buttonWorks(){
     this.title = "Kendo UI button works!";
     this.works=false;
@@ -32,8 +36,6 @@ export class AppComponent {
     this.works=true;
   }
 
-  opened = false;
-
   close() {
     this.opened = false;
   }
@@ -42,11 +44,7 @@ export class AppComponent {
     this.opened = true;
    }
 
-  constructor(
-    private notificationService: NotificationService
-  ) {}
-
-  public show(): void {
+  show(): void {
     this.notificationService.show({
       content: 'Your data has been saved!',
       animation: { type: 'slide', duration: 500},
@@ -54,6 +52,5 @@ export class AppComponent {
       type: { style: 'success', icon: true }
     });
     this.opened = false;
-  }
-    
+  } 
 }
