@@ -1,21 +1,83 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+     {{ title }}
+     <br>
+     Welcome 
+    
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <button kendoButton (click)="buttonWorks()" *ngIf="works" [primary]="true">Kendo Button</button>
+  <button kendoButton (click)="intro()" *ngIf="!works" [primary]="true">Go Back</button>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+<div kendoTooltip filter="strong" style="text-align: center;padding-top: 20px;">
+   <br> <p><strong title="Wow! Tooltip works as well">Hover over me</strong></p>  
+</div><br>
+
+<div class="example-wrapper">
+   <button kendoButton *ngIf="!opened" (click)="open()" [primary]="true">Click me!</button>
+   <app-grid></app-grid>
+</div>
+
+
+<kendo-window title="Please provide additional data" *ngIf="opened" (close)="close()" [minWidth]="250" [width]="450">
+   <form class="k-form">
+      <fieldset>
+         <legend>User Details</legend>
+
+         <div class="k-form-field">
+            <span>First Name<span class="k-required">*</span>:
+            <kendo-textbox-container  floatingLabel="Enter First name">
+               <input style="width: 250px;" kendoTextBox/>
+            </kendo-textbox-container><br></span>
+
+            <span>Last Name<span class="k-required">*</span>:
+            <kendo-textbox-container  floatingLabel="Enter Last name">
+               <input style="width: 250px;" kendoTextBox/>
+            </kendo-textbox-container></span>
+         </div>
+
+         <kendo-tabstrip>
+            <kendo-tabstrip-tab [title]="'Text'" [selected]="true">
+               <ng-template kendoTabContent>
+                  <div class="number"><br>
+                     Phone number:
+                     <kendo-dropdownlist  name="code" style="width: 67px;" [data]="codes" [(ngModel)]="code" name="code">
+                     </kendo-dropdownlist>&nbsp;
+                     <kendo-maskedtextbox
+                        [mask]="mask"
+                        [value]="value"
+                        [maskValidation]="maskValidation">
+                     </kendo-maskedtextbox><br><br>
+                  </div>
+               </ng-template>
+            </kendo-tabstrip-tab>
+
+            <kendo-tabstrip-tab [title]="'Email'">
+               <ng-template kendoTabContent>
+                  <div class="email">
+                     Email:
+                     <kendo-textbox-container>
+                        <input style="width: 170px;" kendoTextBox placeholder="Enter email" />
+                     </kendo-textbox-container>
+                     <kendo-dropdownlist  name="handle" style="width: 127px;" [data]="handles" [(ngModel)]="handle" name="handle">
+                     </kendo-dropdownlist><br><br>
+                  </div>
+               </ng-template>
+            </kendo-tabstrip-tab>
+         </kendo-tabstrip>
+            
+
+         
+      </fieldset>
+
+      <div class="text-right" style="text-align: center;">
+         <button type="button" class="k-button" (click)="close()">Cancel</button> &nbsp;&nbsp;
+         <button type="button" class="k-button k-primary" (click)="show()">Submit</button>
+      </div>
+   </form>
+</kendo-window>
 
 <router-outlet></router-outlet>
+
+

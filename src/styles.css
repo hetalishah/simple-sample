@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+.example-wrapper {
+    text-align: center;  
+}
+
+.k-tabstrip-items .k-item {
+    width:183.5px;
+}
+
+.k-tabstrip {
+    text-align: center 
+}
+
+.k-maskedtextbox .k-textbox {
+    color:rgba(0,0,0,0.4) ;
+}
+
+.k-form input, .k-form label:not(.k-checkbox-label):not(.k-radio-label), .k-form .k-widget:not(.k-calendar) {
+    display: inline-block;
+}
